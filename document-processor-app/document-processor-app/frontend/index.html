@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Processor App</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Document Processor</h1>
+        <p>Upload your PDF and image files for processing.</p>
+        <input type="file" id="file-input" multiple accept=".pdf, .jpg, .jpeg, .png">
+        <button id="upload-button">Upload Files</button>
+        <div id="output-container">
+            <h2>Processed Outputs</h2>
+            <ul id="output-list"></ul>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/fileUpload.js"></script>
+</body>
+</html>

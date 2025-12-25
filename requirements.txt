@@ -1,0 +1,6 @@
+paddleocr
+paddlepaddle
+groq
+PyMuPDF
+Pillow
+numpy

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: document-processor-app
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python backend/app.py"
+    envVars:
+      - key: GROQ_API_KEY
+        fromSecret: GROQ_API_KEY_SECRET
+    routes:
+      - type: web
+        path: /
+        preservePath: true
+        redirect: false

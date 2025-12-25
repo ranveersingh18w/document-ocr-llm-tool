@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document OCR & AI Processor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-file-alt"></i> Document OCR & AI Processor</h1>
+                <p class="subtitle">Extract and format data from PDFs and images using AI</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h2>Upload Your Documents</h2>
+                    <p class="upload-description">
+                        Drag and drop files here or click to browse<br>
+                        <span class="supported-files">Supports: PDF, PNG, JPG, JPEG, GIF</span>
+                    </p>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="fileInput" multiple accept=".pdf,.png,.jpg,.jpeg,.gif" hidden>
+                        <label for="fileInput" class="upload-label">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Choose Files</span>
+                        </label>
+                    </div>
+
+                    <div class="file-list" id="fileList"></div>
+
+                    <button class="btn-process" id="processBtn" disabled>
+                        <i class="fas fa-magic"></i>
+                        Process Documents
+                    </button>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-card">
+                    <h3><i class="fas fa-spinner fa-spin"></i> Processing Documents...</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0%</span>
+                    </div>
+                    <p class="progress-info" id="progressInfo">Preparing files...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2><i class="fas fa-check-circle"></i> Processing Results</h2>
+                    <button class="btn-clear" id="clearBtn">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+
+                <div class="results-grid" id="resultsGrid"></div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by <strong>PaddleOCR</strong> & <strong>Groq AI</strong> | Made with <i class="fas fa-heart"></i></p>
+        </footer>
+    </div>
+
+    <!-- Modal for viewing details -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Document Details</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <button class="tab-btn active" data-tab="extracted">
+                        <i class="fas fa-file-text"></i> Extracted Text
+                    </button>
+                    <button class="tab-btn" data-tab="formatted">
+                        <i class="fas fa-code"></i> Formatted JSON
+                    </button>
+                </div>
+                <div class="modal-content-area">
+                    <div class="tab-content active" id="extractedTab">
+                        <pre id="extractedText"></pre>
+                    </div>
+                    <div class="tab-content" id="formattedTab">
+                        <pre id="formattedJson"></pre>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-copy" id="copyExtracted">
+                        <i class="fas fa-copy"></i> Copy Extracted
+                    </button>
+                    <button class="btn-copy" id="copyFormatted">
+                        <i class="fas fa-copy"></i> Copy JSON
+                    </button>
+                    <button class="btn-download" id="downloadJson">
+                        <i class="fas fa-download"></i> Download JSON
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/fileUpload.js"></script>
+</body>
+</html>

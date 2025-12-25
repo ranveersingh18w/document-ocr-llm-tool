@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    GROQ_API_KEY = os.getenv('GROQ_API_KEY', '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')
+    GROQ_API_KEY = os.getenv('GROQ_API_KEY')
     UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads/')
     OUTPUT_FOLDER = os.getenv('OUTPUT_FOLDER', 'outputs/')
     MAX_CONTENT_LENGTH = 100 * 1024 * 1024  # Limit upload size to 100 MB

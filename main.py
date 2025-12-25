@@ -387,10 +387,6 @@ Return ONLY valid JSON, no explanations or markdown. Format:
 
 
 if __name__ == "__main__":
-    # Set Groq API key if not already set
-    if not os.getenv("GROQ_API_KEY"):
-        os.environ["GROQ_API_KEY"] = "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"
-    
     root = tk.Tk()
     app = AadhaarOCRApp(root)
     root.mainloop()

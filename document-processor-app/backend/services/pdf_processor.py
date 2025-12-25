@@ -1,14 +1,11 @@
 import fitz  # PyMuPDF
-from paddleocr import PaddleOCR
-import os
+import pytesseract
 from PIL import Image
 import io
-
-# Initialize PaddleOCR
-ocr = PaddleOCR(use_angle_cls=True, lang='en', show_log=False)
+import os
 
 def process_pdf(file_path):
-    """Extract text from PDF using PyMuPDF and PaddleOCR for images"""
+    """Extract text from PDF using PyMuPDF and Tesseract OCR for images"""
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"The file {file_path} does not exist.")
     
@@ -29,10 +26,9 @@ def process_pdf(file_path):
                 pix = page.get_pixmap(matrix=fitz.Matrix(2, 2))  # 2x zoom for better quality
                 img_data = pix.tobytes("png")
                 
-                # Use PaddleOCR
-                result = ocr.ocr(img_data, cls=True)
-                if result and result[0]:
-                    text = '\n'.join([line[1][0] for line in result[0]])
+                # Convert to PIL Image and use Tesseract
+                img = Image.open(io.BytesIO(img_data))
+                text = pytesseract.image_to_string(img)
             
             all_text.append(f"--- Page {page_num + 1} ---\n{text}")
         

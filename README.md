@@ -14,6 +14,42 @@ This project implements an **end-to-end Intelligent Document Processing (IDP)** 
 - **PaddleOCR** for text extraction
 - **Groq LLM (Llama 3.3 70B)** for structuring to json format
 
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────┐
+│ PDF / Image │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────┐
+│  PaddleOCR      │ ← Text Extraction
+│  (Confidence    │   (Multi-page PDF support)
+│   Filtering)    │
+└──────┬──────────┘
+       │
+       ▼
+┌─────────────────┐
+│  Raw OCR Text   │
+│  (with scores)  │
+└──────┬──────────┘
+       │
+       ▼
+┌─────────────────┐
+│  Groq LLM       │ ← Semantic Understanding
+│  (Llama 3.3)    │   Field Extraction
+└──────┬──────────┘
+       │
+       ▼
+┌─────────────────┐
+│ Structured JSON │ ← Final Output
+│  (Auto-saved)   │
+└─────────────────┘
+```
+
+
 ### ✨ Key Features
 
 ✅ **File Upload Interface** - Browse and select PDF or image files  
@@ -130,42 +166,6 @@ This **hybrid OCR + LLM approach** significantly improves real-world document ex
 - Context awareness  
 - Error correction
 - Field mapping intelligence
-
----
-
-## 🏗️ Architecture
-
-```
-┌─────────────┐
-│ PDF / Image │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────────┐
-│  PaddleOCR      │ ← Text Extraction
-│  (Confidence    │   (Multi-page PDF support)
-│   Filtering)    │
-└──────┬──────────┘
-       │
-       ▼
-┌─────────────────┐
-│  Raw OCR Text   │
-│  (with scores)  │
-└──────┬──────────┘
-       │
-       ▼
-┌─────────────────┐
-│  Groq LLM       │ ← Semantic Understanding
-│  (Llama 3.3)    │   Field Extraction
-└──────┬──────────┘
-       │
-       ▼
-┌─────────────────┐
-│ Structured JSON │ ← Final Output
-│  (Auto-saved)   │
-└─────────────────┘
-```
-
 ---
 
 ## 📁 Project Structure
@@ -179,10 +179,4 @@ final_code/
 └── output/             # Auto-created for results
     └── aadhaar_*.json  # Extracted data files
 ```
-
-## 📧 Contact
-
-**Project by:** [Your Name]  
-**Email:** [Your Email]  
-**Submitted for:** Intelligent Document Processing Screening Task
 

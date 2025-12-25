@@ -3,8 +3,9 @@ flask-cors==4.0.0
 werkzeug==3.0.1
 paddleocr
 paddlepaddle
-PyMuPDF==1.23.8
+pymupdf
 Pillow==10.1.0
 groq
 python-dotenv==1.0.0
 gunicorn==21.2.0
+opencv-python-headless
